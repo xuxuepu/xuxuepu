@@ -3,6 +3,15 @@
     <div>
       <swiper :list="swiper_list" auto height="300px"></swiper>
     </div>
+    <div>
+      <divider><span style="color:#999;">联系我</span></divider>
+      <ul>
+        <li>电话：15889559171</li>
+        <li>QQ：529199267</li>
+        <li>e-mail：xuxuepu@126.com</li>
+        <li>网址：http://www.xuxuepu.com</li>
+      </ul>
+    </div>
     <div style="margin: 10px;overflow: hidden;" v-for="item in list">
       <masker style="border-radius: 2px;" :opacity="0.5">
         <div class="m-img" :style="{backgroundImage: 'url(' + item.img + ')'}"></div>
@@ -29,6 +38,7 @@
   import Swiper from 'vux/dist/components/swiper'
   import Masker from 'vux/dist/components/masker'
   import WechatEmotion from 'vux/dist/components/wechat-emotion'
+  import Divider from 'vux/dist/components/divider'
   import img1 from '../assets/1.jpg'
   import img2 from '../assets/2.jpg'
   import img3 from '../assets/3.jpg'
@@ -36,7 +46,7 @@
 
   export default {
     components: {
-      Swiper, Masker, WechatEmotion
+      Swiper, Masker, WechatEmotion, Divider
     },
     data () {
       return {

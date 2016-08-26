@@ -25,18 +25,13 @@
 </template>
 
 <script>
-import Xheader from 'vux/dist/components/x-header'
-import Group from 'vux/dist/components/group'
-import Cell from 'vux/dist/components/cell'
 import Tabbar from 'vux/dist/components/tabbar'
 import TabbarItem from 'vux/dist/components/tabbar-item'
-import Calendar from 'vux/dist/components/calendar'
-import Scroller from 'vux/dist/components/scroller'
 import Index from 'components/Index'
 
 export default {
   components: {
-    Xheader, Group, Cell, Tabbar, TabbarItem, Calendar, Scroller, Index
+    Tabbar, TabbarItem, Index
   }
 }
 </script>
