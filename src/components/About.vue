@@ -1,20 +1,12 @@
 <template>
   <div>
-    <div style="position:fixed;width:100%;z-index:2">
-      <xheader :left-options="{showBack: false}">胖墩个人网站</xheader>
-    </div>
-    <div style="height:46px"></div>
     <div>
       <swiper :list="swiper_list" auto height="300px"></swiper>
     </div>
+    <div style="height:46px"></div>
     <div>
-      <divider><span style="color:#999;">联系我</span></divider>
-      <ul>
-        <li>电话：15889559171</li>
-        <li>QQ：529199267</li>
-        <li>e-mail：xuxuepu@126.com</li>
-        <li>网址：http://www.xuxuepu.com</li>
-      </ul>
+      <divider><span style="color:#999;">关于</span></divider>
+
     </div>
     <div style="margin: 10px;overflow: hidden;" v-for="item in list">
       <masker style="border-radius: 2px;" :opacity="0.5">
@@ -39,7 +31,6 @@
 </template>
 
 <script>
-  import Xheader from 'vux/dist/components/x-header'
   import Swiper from 'vux/dist/components/swiper'
   import Masker from 'vux/dist/components/masker'
   import WechatEmotion from 'vux/dist/components/wechat-emotion'
@@ -51,7 +42,7 @@
 
   export default {
     components: {
-      Xheader, Swiper, Masker, WechatEmotion, Divider
+      Swiper, Masker, WechatEmotion, Divider
     },
     data () {
       return {
