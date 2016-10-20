@@ -1,6 +1,6 @@
-# xuxuepu
+# xxp
 
-> xuxuepu
+> A Vue.js project
 
 ## Build Setup
 
