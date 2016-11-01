@@ -13,6 +13,10 @@ export default {
   methods: {
     loadTop (id) {
       this.$refs.loadmore.onTopLoaded(id)
+    },
+    loadBottom (id) {
+    },
+    allLoaded (id) {
     }
   },
   data () {

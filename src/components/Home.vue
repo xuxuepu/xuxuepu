@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg" style="width:100%;height:100%;" alt=""/>
+    <mt-swipe :auto="4000">
+      <mt-swipe-item>1</mt-swipe-item>
+      <mt-swipe-item>2</mt-swipe-item>
+      <mt-swipe-item>3</mt-swipe-item>
+    </mt-swipe>
   </div>
 </template>
 

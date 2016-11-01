@@ -16,6 +16,9 @@ export default {
 </script>
 
 <style>
+body{
+  background:#FAFAFA;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -56,12 +59,12 @@ a:active { color: #1D9FD5;}
 .f_s36 { font-size: 36px !important; }
 
 @font-face {
-  font-family: 'iconfont';
-  src: url('//at.alicdn.com/t/font_1477567529_4164958.eot'); /* IE9*/
-  src: url('//at.alicdn.com/t/font_1477567529_4164958.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('//at.alicdn.com/t/font_1477567529_4164958.woff') format('woff'), /* chrome、firefox */
-  url('//at.alicdn.com/t/font_1477567529_4164958.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('//at.alicdn.com/t/font_1477567529_4164958.svg#iconfont') format('svg'); /* iOS 4.1- */
+  font-family: 'iconfont';  /* project id："169033" */
+  src: url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.eot');
+  src: url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.eot') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.svg#iconfont') format('svg');
 }
 
 .iconfont{
