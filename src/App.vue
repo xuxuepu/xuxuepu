@@ -1,24 +1,68 @@
 <template>
   <div id="app">
-    <tab-menu></tab-menu>
+    <div class="tab-content">
+      <home v-if="selected=='home'"></home>
+      <essay v-if="selected=='essay'"></essay>
+      <about v-if="selected=='about'"></about>
+      <my v-if="selected=='my'"></my>
+    </div>
+    <div class="tab-bottom">
+      <mt-tabbar v-model="selected">
+        <mt-tab-item id="home">
+          <i slot="icon" class="iconfont f_s24">&#xe600;</i>
+          首页
+        </mt-tab-item>
+        <mt-tab-item id="essay">
+          <i slot="icon" class="iconfont f_s24">&#xe603;</i>
+          文章
+        </mt-tab-item>
+        <mt-tab-item id="发现">
+          <i slot="icon" class="iconfont f_s24">&#xe604;</i>
+          发现
+        </mt-tab-item>
+        <mt-tab-item id="about">
+          <i slot="icon" class="iconfont f_s24">&#xe601;</i>
+          关于
+        </mt-tab-item>
+        <mt-tab-item id="my">
+          <i slot="icon" class="iconfont f_s24">&#xe602;</i>
+          我
+        </mt-tab-item>
+      </mt-tabbar>
+    </div>
   </div>
 </template>
 
 <script>
-import TabMenu from './components/TabMenu'
+import Vue from 'vue'
+import { Tabbar, TabItem } from 'mint-ui'
+import Home from './components/Home'
+import Essay from './components/Essay'
+import About from './components/About'
+import My from './components/My'
+
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabItem.name, TabItem)
 
 export default {
   name: 'app',
   components: {
-    TabMenu
+    Home, Essay, About, My
+  },
+  methods: {
+    test: function () {
+      console.log('test')
+    }
+  },
+  data () {
+    return {
+      selected: 'home'
+    }
   }
 }
 </script>
 
 <style>
-body{
-  background:#FAFAFA;
-}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,7 +75,7 @@ body{
 }
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, div, dl, dt, dd, ul, ol, li, pre, form, fieldset, lengend, button, input, textarea, th, td { margin: 0; padding: 0;}
 /*body*/
-body { font:14px "Microsoft YaHei",微软雅黑,"Arail"; /* letter-spacing: 1px; */overflow-x:hidden;}
+body { font:14px "Microsoft YaHei",微软雅黑,"Arail"; /* letter-spacing: 1px; */overflow-x:hidden;background:#F0F0F0;}
 fieldset, img { border: 0; }
 ::-webkit-input-placeholder { /* WebKit browsers */ color:#b2b2b2;}
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */color:#b2b2b2;}
@@ -44,6 +88,7 @@ input, button, select, textarea { outline: none; }
 ul, li { list-style-type: none; }
 a { text-decoration: none; }
 a:active { color: #1D9FD5;}
+table { border-collapse: collapse; border-spacing: 0;font-size: 14px;table-layout:fixed; }
 
 /*字体大小*/
 .f_s8 { font-size: 8px !important; }
@@ -74,4 +119,15 @@ a:active { color: #1D9FD5;}
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.tab-content{
+  margin-bottom:55px;
+}
+.tab-bottom{
+  position:fixed;
+  left:0px;
+  right:0px;
+  bottom:0px;
+}
+
 </style>

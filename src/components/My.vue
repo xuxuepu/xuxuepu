@@ -1,13 +1,23 @@
 <template>
   <div class="my">
     <mt-header title="胖墩的资料"></mt-header>
-    <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg" style="width:100%;height:100%;" alt=""/>
-    <mt-cell title="胖墩">
-      <i slot="icon" class="iconfont" style="color:#004284;margin-right:10px;">&#xe60e;</i>
-    </mt-cell>
-    <mt-cell title="许学普 epo">
-      <i slot="icon" class="iconfont" style="color:#848400;margin-right:10px;">&#xe638;</i>
-    </mt-cell>
+    <table>
+      <tr>
+        <td class="td1" rowspan="2">
+          <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg/min100" width="100" height="100" alt=""/>
+        </td>
+        <td class="td2">
+          <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe60e;</i>
+          <span>胖墩XXXXXXXXL</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="td3">
+          <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe638;</i>
+          <span>许学普 epo</span>
+        </td>
+      </tr>
+    </table>
     <mt-cell title="15889559171" is-link to="tel:15889559171">
       <i slot="icon" class="iconfont" style="color:#840042;margin-right:10px;">&#xe609;</i>
     </mt-cell>
@@ -26,16 +36,25 @@
     <mt-cell title="广东省深圳市南山区南山智园C3栋">
       <i slot="icon" class="iconfont" style="color:#428484;margin-right:10px;">&#xe607;</i>
     </mt-cell>
-    <div style="padding:10px;"><mt-button type="default" size="large" >查看详细资料</mt-button></div>
+    <div style="padding:10px;text-align:center;"><mt-button icon="more" type="primary" size="large" @click.native="showDetailInfo">点击查看更多资料</mt-button></div>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { Header, Cell, CellSwipe, MessageBox, Button } from 'mint-ui'
+
+Vue.component(Header.name, Header)
+Vue.component(Cell.name, Cell)
+Vue.component(CellSwipe.name, Cell)
+Vue.component(CellSwipe.name, Cell)
+Vue.component(Button.name, Button)
+
 export default {
   name: 'my',
   methods: {
-    onFlipped: function () {
-      console.log('sdf')
+    showDetailInfo: function () {
+      MessageBox('提示', '暂未开放')
     }
   },
   data () {
@@ -48,5 +67,34 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  table{
+    width:100%;
+    background-image:url(../assets/my_bg.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+  }
+  table .td1{
+    width:140px;
+    height:50px;
+  }
+  table .td1 img{
+      border-radius:100px;
+      margin:5px 0 0 10px;
+      box-shadow:3px 3px 10px rgba(0,0,0,.5);
+  }
+  table .td2, table .td3{
+    height:50px;
+    color:#fff;
+    font-size:16px;
+    text-shadow:3px 3px 10px #848484;
+  }
+  table .td2{
+    vertical-align:bottom;
+    padding-bottom:10px;
+  }
+  table .td3{
+    vertical-align:top;
+    padding-top:10px;
+  }
 </style>

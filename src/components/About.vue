@@ -5,11 +5,16 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Header } from 'mint-ui'
+
+Vue.component(Header.name, Header)
+
 export default {
   name: 'about',
   methods: {
-    onFlipped: function () {
-      console.log('sdf')
+    test: function () {
+      console.log('test')
     }
   },
   data () {

@@ -8,6 +8,13 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Header, Loadmore, Cell } from 'mint-ui'
+
+Vue.component(Header.name, Header)
+Vue.component(Loadmore.name, Loadmore)
+Vue.component(Cell.name, Cell)
+
 export default {
   name: 'essay',
   methods: {
