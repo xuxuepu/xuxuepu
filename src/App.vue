@@ -1,30 +1,31 @@
 <template>
   <div id="app">
     <div class="tab-content">
-      <home v-if="selected=='home'"></home>
-      <essay v-if="selected=='essay'"></essay>
-      <about v-if="selected=='about'"></about>
-      <my v-if="selected=='my'"></my>
+      <home v-if="selected=='home'"/>
+      <essay v-if="selected=='essay'"/>
+      <find v-if="selected=='find'"/>
+      <about v-if="selected=='about'"/>
+      <my v-if="selected=='my'"/>
     </div>
     <div class="tab-bottom">
       <mt-tabbar v-model="selected">
-        <mt-tab-item id="home">
+        <mt-tab-item id="home" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe600;</i>
           首页
         </mt-tab-item>
-        <mt-tab-item id="essay">
+        <mt-tab-item id="essay" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe603;</i>
           文章
         </mt-tab-item>
-        <mt-tab-item id="发现">
+        <mt-tab-item id="find" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe604;</i>
           发现
         </mt-tab-item>
-        <mt-tab-item id="about">
+        <mt-tab-item id="about" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe601;</i>
           关于
         </mt-tab-item>
-        <mt-tab-item id="my">
+        <mt-tab-item id="my" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe602;</i>
           我
         </mt-tab-item>
@@ -38,6 +39,7 @@ import Vue from 'vue'
 import { Tabbar, TabItem } from 'mint-ui'
 import Home from './components/Home'
 import Essay from './components/Essay'
+import Find from './components/Find'
 import About from './components/About'
 import My from './components/My'
 
@@ -47,7 +49,7 @@ Vue.component(TabItem.name, TabItem)
 export default {
   name: 'app',
   components: {
-    Home, Essay, About, My
+    Home, Essay, Find, About, My
   },
   methods: {
     test: function () {
@@ -86,8 +88,8 @@ fieldset, img { border: 0; }
 .remove_scrollbar::-webkit-scrollbar{width:0px}/*去除滚动条,依然可滚动*/
 input, button, select, textarea { outline: none; }
 ul, li { list-style-type: none; }
-a { text-decoration: none; }
-a:active { color: #1D9FD5;}
+a { text-decoration: none;  color: #666;}
+a:active { color: #26A2FF;}
 table { border-collapse: collapse; border-spacing: 0;font-size: 14px;table-layout:fixed; }
 
 /*字体大小*/
@@ -102,6 +104,14 @@ table { border-collapse: collapse; border-spacing: 0;font-size: 14px;table-layou
 .f_s20 { font-size: 20px !important; }
 .f_s24 { font-size: 24px !important; }
 .f_s36 { font-size: 36px !important; }
+
+/*文本自动换行*/
+.pre { white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; }
+/*不换行*/
+.no_pre { white-space: nowrap; }
+/*文字太宽加....*/
+.add_dot { overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;}
+.add_dot2 {overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 
 @font-face {
   font-family: 'iconfont';  /* project id："169033" */

@@ -4,7 +4,7 @@
     <table>
       <tr>
         <td class="td1" rowspan="2">
-          <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg/min100" width="100" height="100" alt=""/>
+          <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg/min100" width="64" height="64" alt=""/>
         </td>
         <td class="td2">
           <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe60e;</i>
@@ -75,13 +75,13 @@ export default {
     background-position:center center;
   }
   table .td1{
-    width:140px;
+    width:100px;
     height:50px;
   }
   table .td1 img{
-      border-radius:100px;
-      margin:5px 0 0 10px;
-      box-shadow:3px 3px 10px rgba(0,0,0,.5);
+      border-radius:50%;
+      margin:5px 0 0 15px;
+      border:5px solid rgba(255,225,225,.5);
   }
   table .td2, table .td3{
     height:50px;
@@ -91,10 +91,10 @@ export default {
   }
   table .td2{
     vertical-align:bottom;
-    padding-bottom:10px;
+    padding-bottom:2px;
   }
   table .td3{
     vertical-align:top;
-    padding-top:10px;
+    padding-top:2px;
   }
 </style>
