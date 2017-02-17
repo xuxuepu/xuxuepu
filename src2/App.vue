@@ -1,27 +1,31 @@
 <template>
   <div id="app">
     <div class="tab-content">
-      <router-view></router-view>
+      <home v-if="selected=='home'"/>
+      <essay v-if="selected=='essay'"/>
+      <find v-if="selected=='find'"/>
+      <about v-if="selected=='about'"/>
+      <my v-if="selected=='my'"/>
     </div>
     <div class="tab-bottom">
       <mt-tabbar v-model="selected">
-        <mt-tab-item id="home" href="#/">
+        <mt-tab-item id="home" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe600;</i>
           首页
         </mt-tab-item>
-        <mt-tab-item id="essay" href="#/essay">
+        <mt-tab-item id="essay" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe603;</i>
           文章
         </mt-tab-item>
-        <mt-tab-item id="find" href="#/find">
+        <mt-tab-item id="find" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe604;</i>
           发现
         </mt-tab-item>
-        <mt-tab-item id="about" href="#/about">
+        <mt-tab-item id="about" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe601;</i>
           关于
         </mt-tab-item>
-        <mt-tab-item id="my" href="#/my">
+        <mt-tab-item id="my" href="#">
           <i slot="icon" class="iconfont f_s24">&#xe602;</i>
           我
         </mt-tab-item>
@@ -31,22 +35,30 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { Tabbar, TabItem } from 'mint-ui'
-import 'mint-ui/lib/style.css'
+import Home from './components/Home'
+import Essay from './components/Essay'
+import Find from './components/Find'
+import About from './components/About'
+import My from './components/My'
+
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabItem.name, TabItem)
 
 export default {
   name: 'app',
   components: {
-    'mt-tabbar': Tabbar, 'mt-tab-item': TabItem
+    Home, Essay, Find, About, My
+  },
+  methods: {
+    test: function () {
+      console.log('test')
+    }
   },
   data () {
     return {
       selected: 'home'
-    }
-  },
-  methods: {
-    test: function () {
-      console.log('sdfsdf')
     }
   }
 }
@@ -127,4 +139,5 @@ table { border-collapse: collapse; border-spacing: 0;font-size: 14px;table-layou
   right:0px;
   bottom:0px;
 }
+
 </style>

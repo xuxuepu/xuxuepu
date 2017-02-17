@@ -2,13 +2,18 @@
   <div class="essay">
     <mt-header title="文章"></mt-header>
     <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <mt-cell v-for="item in list" v-bind:title="item.title" v-bind:label="item.label" is-link href="#/essay/detail"></mt-cell>
+      <mt-cell v-for="item in list" v-bind:title="item.title" v-bind:label="item.label" is-link></mt-cell>
     </mt-loadmore>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import { Header, Loadmore, Cell } from 'mint-ui'
+
+Vue.component(Header.name, Header)
+Vue.component(Loadmore.name, Loadmore)
+Vue.component(Cell.name, Cell)
 
 export default {
   name: 'essay',
@@ -20,9 +25,6 @@ export default {
     },
     allLoaded (id) {
     }
-  },
-  components: {
-    'mt-header': Header, 'mt-loadmore': Loadmore, 'mt-cell': Cell
   },
   data () {
     return {
