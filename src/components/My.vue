@@ -1,6 +1,6 @@
 <template>
   <div class="my">
-    <mt-header title="胖墩的资料"></mt-header>
+    <sfc-header title="胖墩的资料"></sfc-header>
     <table>
       <tr>
         <td class="td1" rowspan="2">
@@ -18,31 +18,31 @@
         </td>
       </tr>
     </table>
-    <mt-cell title="15889559171" is-link to="tel:15889559171">
+    <sfc-cell title="15889559171" is-link to="tel:15889559171">
       <i slot="icon" class="iconfont" style="color:#840042;margin-right:10px;">&#xe609;</i>
-    </mt-cell>
-    <mt-cell title="xuxuepu" is-link to="#">
+    </sfc-cell>
+    <sfc-cell title="xuxuepu" is-link to="#">
       <i slot="icon" class="iconfont" style="color:#007800;margin-right:10px;">&#x3433;</i>
-    </mt-cell>
-    <mt-cell title="529199267" is-link to="tencent://message/?uin=529199267&Site=&Menu=yes">
+    </sfc-cell>
+    <sfc-cell title="529199267" is-link to="tencent://message/?uin=529199267&Site=&Menu=yes">
       <i slot="icon" class="iconfont" style="color:#FF4521;margin-right:10px;">&#xe606;</i>
-    </mt-cell>
-    <mt-cell title="xuxuepu@126.com" is-link to="mailto:xuxuepu@126.com">
+    </sfc-cell>
+    <sfc-cell title="xuxuepu@126.com" is-link to="mailto:xuxuepu@126.com">
       <i slot="icon" class="iconfont" style="color:#0084FF;margin-right:10px;">&#xe605;</i>
-    </mt-cell>
-    <mt-cell title="http://www.xuxuepu.com">
+    </sfc-cell>
+    <sfc-cell title="http://www.xuxuepu.com">
       <i slot="icon" class="iconfont" style="color:#844200;margin-right:10px;">&#xe60a;</i>
-    </mt-cell>
-    <mt-cell title="广东省深圳市南山区南山智园C3栋">
+    </sfc-cell>
+    <sfc-cell title="广东省深圳市南山区南山智园C3栋">
       <i slot="icon" class="iconfont" style="color:#428484;margin-right:10px;">&#xe607;</i>
-    </mt-cell>
-    <div style="padding:10px;text-align:center;"><mt-button icon="more" type="primary" size="large" @click.native="showDetailInfo">点击查看更多资料</mt-button></div>
+    </sfc-cell>
+    <div style="padding:10px;text-align:center;"><sfc-button icon="more" type="primary" size="large" @click.native="showDetailInfo">点击查看更多资料</sfc-button></div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { Header, Cell, CellSwipe, MessageBox, Button } from 'mint-ui'
+import { Header, Cell, CellSwipe, MessageBox, Button } from 'sfc-ui'
 
 Vue.component(Header.name, Header)
 Vue.component(Cell.name, Cell)

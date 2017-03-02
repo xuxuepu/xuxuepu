@@ -1,14 +1,14 @@
 <template>
   <div class="essay">
-    <mt-header title="文章"></mt-header>
-    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <mt-cell v-for="item in list" v-bind:title="item.title" v-bind:label="item.label" is-link href="#/essay/detail"></mt-cell>
-    </mt-loadmore>
+    <sfc-header title="文章"></sfc-header>
+    <sfc-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+      <sfc-cell v-for="item in list" v-bind:title="item.title" v-bind:label="item.label" is-link href="#/essay/detail"></sfc-cell>
+    </sfc-loadmore>
   </div>
 </template>
 
 <script>
-import { Header, Loadmore, Cell } from 'mint-ui'
+import { Header, Loadmore, Cell } from 'sfc-ui'
 
 export default {
   name: 'essay',
@@ -22,7 +22,7 @@ export default {
     }
   },
   components: {
-    'mt-header': Header, 'mt-loadmore': Loadmore, 'mt-cell': Cell
+    'sfc-header': Header, 'sfc-loadmore': Loadmore, 'sfc-cell': Cell
   },
   data () {
     return {

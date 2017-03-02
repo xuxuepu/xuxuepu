@@ -1,26 +1,25 @@
 <template>
   <div class="about">
-    <mt-header title="关于网站"></mt-header>
+    <sfc-header title="关于网站"></sfc-header>
     <p>前端</p>
-    <mt-cell title="vue、mint-ui、webpack"></mt-cell>
+    <sfc-cell title="vue、sfc-ui、webpack"></sfc-cell>
     <p>服务端</p>
-    <mt-cell title="Node、express、socket.io"></mt-cell>
+    <sfc-cell title="Node、express、socket.io"></sfc-cell>
     <p>数据库</p>
-    <mt-cell title="MySQL"></mt-cell>
+    <sfc-cell title="MySQL"></sfc-cell>
     <p>工具</p>
-    <mt-cell title="WebStorm、Navicat、git"></mt-cell>
+    <sfc-cell title="WebStorm、Navicat、git"></sfc-cell>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { Header, Cell } from 'mint-ui'
-
-Vue.component(Header.name, Header)
-Vue.component(Cell.name, Cell)
+import { Header, Cell } from 'sfc-ui'
 
 export default {
   name: 'about',
+  components: {
+    'sfc-header': Header, 'sfc-cell': Cell
+  },
   methods: {
     test: function () {
       console.log('test')

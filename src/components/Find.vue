@@ -1,6 +1,6 @@
 <template>
   <div class="find">
-    <mt-header title="发现"></mt-header>
+    <sfc-header title="发现"></sfc-header>
     <div class="img_div">
       <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg" alt="" width="320"/>
       <p>未发现好东东</p>
@@ -10,7 +10,7 @@
 
 <script>
 import Vue from 'vue'
-import { Header } from 'mint-ui'
+import { Header } from 'sfc-ui'
 
 Vue.component(Header.name, Header)
 

@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <mt-header title="胖墩 - 胖子的神奇生涯">
+    <sfc-header title="胖墩 - 胖子的神奇生涯">
       <router-link to="/" slot="left">
         <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg/min100" width="24" height="24" alt="" style="border-radius:3px;"/>
       </router-link>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
+      <sfc-button icon="more" slot="right"></sfc-button>
+    </sfc-header>
     <div class="banner_div">
-      <mt-swipe :auto="4000">
-        <mt-swipe-item><div class="banner_item1"></div></mt-swipe-item>
-        <mt-swipe-item><div class="banner_item2"></div></mt-swipe-item>
-        <mt-swipe-item><div class="banner_item3"></div></mt-swipe-item>
-      </mt-swipe>
+      <sfc-swipe :auto="4000">
+        <sfc-swipe-item><div class="banner_item1"></div></sfc-swipe-item>
+        <sfc-swipe-item><div class="banner_item2"></div></sfc-swipe-item>
+        <sfc-swipe-item><div class="banner_item3"></div></sfc-swipe-item>
+      </sfc-swipe>
     </div>
     <div class="imgs_div">
       <div v-for="item in imgs">
@@ -25,17 +25,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import config from '../util/config'
-import { Header, Search, Swipe, SwipeItem } from 'mint-ui'
-
-Vue.component(Header.name, Header)
-Vue.component(Search.name, Search)
-Vue.component(Swipe.name, Swipe)
-Vue.component(SwipeItem.name, SwipeItem)
+import { Header, Search, Swipe, SwipeItem, Lazyload } from 'sfc-ui'
 
 export default {
   name: 'home',
+  components: {
+    'sfc-header': Header, 'sfc-searc': Search, 'sfc-swipe': Swipe, 'sfc-swipe-item': SwipeItem, 'sfc-lazyload': Lazyload
+  },
   methods: {
     onFlipped: function () {
       console.log('sdf')

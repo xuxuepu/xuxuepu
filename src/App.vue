@@ -3,41 +3,40 @@
     <div class="tab-content">
       <router-view></router-view>
     </div>
-    <div class="tab-bottom">
-      <mt-tabbar v-model="selected">
-        <mt-tab-item id="home" href="#/">
+    <div class="tab-bottom" v-on:click="test">
+      <sfc-tabbar v-model="selected">
+        <sfc-tab-item id="home" href="#/">
           <i slot="icon" class="iconfont f_s24">&#xe600;</i>
           首页
-        </mt-tab-item>
-        <mt-tab-item id="essay" href="#/essay">
+        </sfc-tab-item>
+        <sfc-tab-item id="essay" href="#/essay">
           <i slot="icon" class="iconfont f_s24">&#xe603;</i>
           文章
-        </mt-tab-item>
-        <mt-tab-item id="find" href="#/find">
+        </sfc-tab-item>
+        <sfc-tab-item id="find" href="#/find">
           <i slot="icon" class="iconfont f_s24">&#xe604;</i>
           发现
-        </mt-tab-item>
-        <mt-tab-item id="about" href="#/about">
+        </sfc-tab-item>
+        <sfc-tab-item id="about" href="#/about">
           <i slot="icon" class="iconfont f_s24">&#xe601;</i>
           关于
-        </mt-tab-item>
-        <mt-tab-item id="my" href="#/my">
+        </sfc-tab-item>
+        <sfc-tab-item id="my" href="#/my">
           <i slot="icon" class="iconfont f_s24">&#xe602;</i>
           我
-        </mt-tab-item>
-      </mt-tabbar>
+        </sfc-tab-item>
+      </sfc-tabbar>
     </div>
   </div>
 </template>
 
 <script>
-import { Tabbar, TabItem } from 'mint-ui'
-import 'mint-ui/lib/style.css'
+import { Tabbar, TabItem, Indicator } from 'sfc-ui'
 
 export default {
   name: 'app',
   components: {
-    'mt-tabbar': Tabbar, 'mt-tab-item': TabItem
+    'sfc-tabbar': Tabbar, 'sfc-tab-item': TabItem
   },
   data () {
     return {
@@ -46,7 +45,11 @@ export default {
   },
   methods: {
     test: function () {
-      console.log('sdfsdf')
+      Indicator.open({
+        text: '加载中...',
+        spinnerType: 'fading-circle'
+      })
+      setTimeout(() => Indicator.close(), 500)
     }
   }
 }

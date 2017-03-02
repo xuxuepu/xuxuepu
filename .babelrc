@@ -3,7 +3,9 @@
     ["es2015", { "modules": false }],
     "stage-2"
   ],
-  "plugins": ["transform-runtime"],
+  "plugins": ["transform-runtime", ["component", [
+    { "libraryName": "sfc-ui", "style": true }
+  ]]],
   "comments": false,
   "env": {
     "test": {

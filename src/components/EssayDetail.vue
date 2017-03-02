@@ -1,15 +1,15 @@
 <template>
   <div class="essaydetail">
-    <mt-header title="文章详情">
+    <sfc-header title="文章详情">
       <router-link to="/essay" slot="left">
-        <mt-button icon="back">返回</mt-button>
+        <sfc-button icon="back">返回</sfc-button>
       </router-link>
-    </mt-header>
+    </sfc-header>
   </div>
 </template>
 
 <script>
-import { Header, Loadmore, Cell, Popup } from 'mint-ui'
+import { Header, Loadmore, Cell, Popup } from 'sfc-ui'
 
 export default {
   name: 'essaydetail',
@@ -23,7 +23,7 @@ export default {
     }
   },
   components: {
-    'mt-header': Header, 'mt-loadmore': Loadmore, 'mt-cell': Cell, 'mt-popup': Popup
+    'sfc-header': Header, 'sfc-loadmore': Loadmore, 'sfc-cell': Cell, 'sfc-popup': Popup
   },
   data () {
     return {
