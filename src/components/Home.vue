@@ -1,11 +1,5 @@
 <template>
   <div class="home">
-    <mint-header title="胖墩 - 胖子的神奇生涯">
-      <router-link to="/" slot="left">
-        <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg/min100" width="24" height="24" alt="" style="border-radius:3px;"/>
-      </router-link>
-      <mint-button icon="more" slot="right"></mint-button>
-    </mint-header>
     <div class="banner_div">
       <mint-swipe :auto="4000">
         <mint-swipe-item><div class="banner_item1"></div></mint-swipe-item>
@@ -25,13 +19,12 @@
 </template>
 
 <script>
-import config from '../util/config'
-import { Header, Search, Swipe, SwipeItem, Lazyload, Button } from 'mint-ui'
+import { Search, Swipe, SwipeItem, Lazyload, Button } from 'mint-ui'
 
 export default {
   name: 'home',
   components: {
-    'mint-header': Header, 'mint-searc': Search, 'mint-swipe': Swipe, 'mint-swipe-item': SwipeItem, 'mint-lazyload': Lazyload, 'mint-button': Button
+    'mint-searc': Search, 'mint-swipe': Swipe, 'mint-swipe-item': SwipeItem, 'mint-lazyload': Lazyload, 'mint-button': Button
   },
   methods: {
     onFlipped: function () {
@@ -42,16 +35,16 @@ export default {
     return {
       selected: 'home',
       value: 'adfsdf',
-      imgs: [{str: '鱿鱼卷一锅炖', src: config.qiniu_path + '/1.jpg'},
-      {str: '这是牛肉还是羊肉？', src: config.qiniu_path + '/2.jpg'},
-      {str: '不晓得什么东东', src: config.qiniu_path + '/3.jpg'},
-      {str: '撸串', src: config.qiniu_path + '/4.jpg'},
-      {str: '白萝卜红萝卜...', src: config.qiniu_path + '/5.jpg'},
-      {str: '貌似是红烧鱼啥的', src: config.qiniu_path + '/6.jpg'},
-      {str: '不晓得哪里的肉圈', src: config.qiniu_path + '/7.jpg'},
-      {str: '红烧猪蹄', src: config.qiniu_path + '/8.jpg'},
-      {str: '烧鸭叉烧双拼', src: config.qiniu_path + '/9.jpg'},
-      {str: '红烧肉', src: config.qiniu_path + '/10.jpg'}]
+      imgs: [{str: '鱿鱼卷一锅炖', src: require('./../assets/1.jpg')},
+      {str: '这是牛肉还是羊肉？', src: require('./../assets/2.jpg')},
+      {str: '不晓得什么东东', src: require('./../assets/3.jpg')},
+      {str: '撸串', src: require('./../assets/4.jpg')},
+      {str: '白萝卜红萝卜...', src: require('./../assets/5.jpg')},
+      {str: '貌似是红烧鱼啥的', src: require('./../assets/6.jpg')},
+      {str: '不晓得哪里的肉圈', src: require('./../assets/7.jpg')},
+      {str: '红烧猪蹄', src: require('./../assets/8.jpg')},
+      {str: '烧鸭叉烧双拼', src: require('./../assets/9.jpg')},
+      {str: '红烧肉', src: require('./../assets/10.jpg')}]
     }
   }
 }
@@ -60,7 +53,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .banner_div{
-    height:200px;
+    height:250px;
   }
   .banner_item1,.banner_item2,.banner_item3{
     height:100%;
@@ -69,13 +62,13 @@ export default {
     background-position:center center;
   }
   .banner_item1{
-    background-image:url(http://7xk0ie.com1.z0.glb.clouddn.com/a1.jpg/w.min500);
+    background-image:url(./../assets/a1.jpg);
   }
   .banner_item2{
-    background-image:url(http://7xk0ie.com1.z0.glb.clouddn.com/a2.jpg/w.min500);
+    background-image:url(./../assets/a2.jpg);
   }
   .banner_item3{
-    background-image:url(http://7xk0ie.com1.z0.glb.clouddn.com/a3.jpg/w.min500);
+    background-image:url(./../assets/a3.jpg);
   }
   .imgs_div{
     overflow:hidden;

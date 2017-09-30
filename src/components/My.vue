@@ -3,7 +3,7 @@
     <table>
       <tr>
         <td class="td1" rowspan="2">
-          <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg/min100" width="64" height="64" alt=""/>
+          <img src="./../assets/123.jpg" width="64" height="64" alt=""/>
         </td>
         <td class="td2">
           <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe60e;</i>
@@ -35,7 +35,7 @@
     <mt-cell title="广东省深圳市南山区南山智园C3栋">
       <i slot="icon" class="iconfont" style="color:#428484;margin-right:10px;">&#xe607;</i>
     </mt-cell>
-    <div style="padding:30px 20px 0;text-align:center;"><mt-button icon="more" type="primary" size="large" @click.native="showDetailInfo">查看更多资料</mt-button></div>
+    <div style="padding:30px 20px 0;text-align:center;"><mt-button icon="more" type="primary" size="large" @click.native="showDetailInfo">更多资料</mt-button></div>
   </div>
 </template>
 
@@ -73,8 +73,8 @@ export default {
     background-position:center center;
   }
   table .td1{
-    width:100px;
-    height:50px;
+    width:120px;
+    height:60px;
   }
   table .td1 img{
       border-radius:50%;
@@ -82,7 +82,7 @@ export default {
       border:5px solid rgba(255,225,225,.5);
   }
   table .td2, table .td3{
-    height:50px;
+    height:60px;
     color:#fff;
     font-size:16px;
     text-shadow:3px 3px 10px #848484;

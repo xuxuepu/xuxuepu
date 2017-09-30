@@ -39,8 +39,9 @@ export default {
     'mt-tabbar': Tabbar, 'mt-tab-item': TabItem
   },
   data () {
+    let wlh = window.location.hash
     return {
-      selected: 'home'
+      selected: wlh.substring(2, wlh.length) || 'home'
     }
   },
   methods: {

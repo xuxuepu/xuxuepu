@@ -2,7 +2,7 @@
   <div class="find">
     <mt-header title="发现"></mt-header>
     <div class="img_div">
-      <img src="http://7xk0ie.com1.z0.glb.clouddn.com/123.jpg" alt="" width="320"/>
+      <img src="./../assets/123.jpg" alt="" width="320"/>
       <p>未发现好东东</p>
     </div>
   </div>

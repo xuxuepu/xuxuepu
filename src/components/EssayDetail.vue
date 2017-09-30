@@ -1,15 +1,11 @@
 <template>
   <div class="essaydetail">
-    <mint-header title="文章详情">
-      <router-link to="/essay" slot="left">
-        <mint-button icon="back">返回</mint-button>
-      </router-link>
-    </mint-header>
+    空的
   </div>
 </template>
 
 <script>
-import { Header, Loadmore, Cell, Popup } from 'mint-ui'
+import { Loadmore, Cell, Popup } from 'mint-ui'
 
 export default {
   name: 'essaydetail',
@@ -23,7 +19,7 @@ export default {
     }
   },
   components: {
-    'mint-header': Header, 'mint-loadmore': Loadmore, 'mint-cell': Cell, 'mint-popup': Popup
+    'mint-loadmore': Loadmore, 'mint-cell': Cell, 'mint-popup': Popup
   },
   data () {
     return {

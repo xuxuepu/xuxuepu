@@ -1,14 +1,15 @@
 <template>
   <div class="essay">
-    <mint-header title="文章"></mint-header>
     <mint-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <mint-cell v-for="item in list" v-bind:title="item.title" v-bind:label="item.label" is-link href="#/essay/detail"></mint-cell>
+      <mint-cell v-for="item in list" v-bind:title="item.title" is-link href="#/essay/detail">
+        <img slot="icon" src="./../assets/123.jpg" width="32" height="32">
+      </mint-cell>
     </mint-loadmore>
   </div>
 </template>
 
 <script>
-import { Header, Loadmore, Cell } from 'mint-ui'
+import { Loadmore, Cell } from 'mint-ui'
 
 export default {
   name: 'essay',
@@ -22,7 +23,7 @@ export default {
     }
   },
   components: {
-    'mint-header': Header, 'mint-loadmore': Loadmore, 'mint-cell': Cell
+    'mint-loadmore': Loadmore, 'mint-cell': Cell
   },
   data () {
     return {
