@@ -63,7 +63,27 @@ export default {
       {title: '毕竟，螃蟹数量有限', label: '其实，吃螃蟹虽然够狠，但并没带来全民性的响应...'},
       {title: '第一个吃大米的人才最可爱', label: '是他，让后世子子孙孙有了吃大米的惯例'}]
     }
-  }
+  },
+  created() {
+    //this.getEssayList();
+  },
+  methods: {
+    getEssayList() {
+      let that = this;
+      that.$http({
+          method: "GET",
+          url: "https://service.xuxuepu.com/api/essay/list"
+        })
+        .then(
+          response => {
+            console.log(response);
+          },
+          error => {
+            
+          }
+        );
+    }
+  },
 }
 </script>
 

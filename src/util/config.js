@@ -1,22 +1,22 @@
-/**
-* 配置信息
-* xuxuepu create 2016-3-25
-*/
-module.exports = {
-  // 是否打印日志
-  is_show_log: false,
-  // 七牛地址
-  qiniu_path: 'http://7xk0ie.com1.z0.glb.clouddn.com',
-  // ajax_http locals
-  request_http: '/api',
-  // ajax_http请求url
-  request_urls: {
-    user: '/user'
-  },
-  // web_socket
-  request_ws: 'ws://192.168.1.192:8888',
-  // web_socket_url
-  request_wsurls: {
-    ws: '/ws'
+const config = (() => {
+  // 服务器地址
+  let url = window.location.origin
+  // 是否是开发环境
+  let isLocalhost = url.indexOf('localhost') >= 0 || url.indexOf('192.168') >= 0
+  return {
+    // 是否是开发环境
+    isLocalhost: isLocalhost,
+    // 打印请求日志
+    isPrintLog: isLocalhost,
+    // ajax_http locals
+    requestHttp: 'https://service.xuxuepu.com/api',
+    // ajax_http请求url
+    api: {
+      getHome: '/home'
+    },
+    urlOrigin: url, // 当前url
+    qiniuPath: 'https://www.xuxuepu.com/'// 七牛地址
   }
-}
+})()
+
+export default config
