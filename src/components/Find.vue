@@ -1,6 +1,5 @@
 <template>
   <div class="find">
-    <mt-header title="发现"></mt-header>
     <div class="img_div">
       <img src="./../assets/123.jpg" alt="" width="320"/>
       <p>未发现好东东</p>
@@ -9,10 +8,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { Header } from 'mint-ui'
-
-Vue.component(Header.name, Header)
 
 export default {
   name: 'find',
