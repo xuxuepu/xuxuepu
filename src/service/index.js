@@ -1,3 +1,4 @@
 import essay from './essay';
+import my from './my';
 
-export default { essay }
+export { essay, my }

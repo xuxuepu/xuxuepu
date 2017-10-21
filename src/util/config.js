@@ -13,7 +13,9 @@ const config = (() => {
     // ajax_http请求url
     api: {
       getHome: '/home',
-      getEssayList: '/essay/list'
+      getEssayList: '/essay/list',
+      getEssayDetail: '/essay/detail',
+      getUserInfo: '/user/info'
     },
     urlOrigin: url, // 当前url
     qiniuPath: 'https://www.xuxuepu.com/'// 七牛地址

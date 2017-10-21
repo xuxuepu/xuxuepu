@@ -1,41 +1,24 @@
 import config from './config';
 
-function parseJSON(response) {
-    return response.json();
-}
-
-function checkStatus(response) {
-
-    if (response.status >= 200 && response.status < 300) {
-        return response;
-    }
-
-    const error = new Error(response.statusText);
-    error.response = response;
-    throw error;
-}
-
 //处理发送前事件
-function beforesendHandling(url, data, callback){
-
+function beforesendHandling(url, data){
     config.isPrintLog ? console.log("【上送url】：\n", url, "\n【上送的数据】：\n", data) : true;
-    typeof callback == "function" ? callback() : true;
 }
 
 //处理完成事件
-function completeHandling(data, callback) {
+function completeHandling(data) {
     config.isPrintLog ? console.log("【返回的数据】：\n", data) : true;
     Number(data.code) == 200 ? logout() : true;//登出
-    typeof callback == "function" ? callback(data) : true;
+    return data;
 }
 
 //处理错误事件
-function errHandling(err, callback){
+function errHandling(err){
     config.isPrintLog ? console.log("【错误信息】：\n", err) : true;
-    typeof callback == "function" ? callback({
+    return {
         code: 520,
         message: '服务器异常，正在努力抢修中'
-    }) : true;
+    };
 }
 
 //登出事件
@@ -45,28 +28,32 @@ function logout() {
 
 /**
  * get请求
- * @param url
+ * @param api
  * @param data
  * @returns {Promise.<Response>}
  */
-function requestGet(url, data, beforesend, complete) {
-    url = config.requestHttp + config.api[url] + '?time=' + new Date().getTime();
-
-    beforesendHandling(url, data, beforesend );//处理发送前事件
+function requestGet(api, data) {
+    let url = config.requestHttp + api + '?time=' + new Date().getTime();
 
     for (let item in data) {
-        url = url + "&" + item + "=" + data[item];
+        if(item != "vueComponent"){
+            url = url + "&" + item + "=" + data[item];
+        }
     }
-    let options = {
-        method: 'GET',
-        mode: 'cors',
-        credentials: 'include'
-    };
-    fetch(url, options)
-        .then(checkStatus)
-        .then(parseJSON)
-        .then(data => completeHandling(data, complete))
-        .catch(err => errHandling(err, complete));
+
+    beforesendHandling(url, data);
+
+    return data.vueComponent.$http({
+        method: "GET",
+        url: url
+      })
+      .then(response => {
+          return completeHandling(response.data);
+        },
+        error => {
+          return errHandling(error);
+        }
+      );
 }
 
 /**

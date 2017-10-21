@@ -3,56 +3,13 @@
     <div class="tab-content">
       <router-view></router-view>
     </div>
-    <div class="tab-bottom" v-on:click="test">
-      <mt-tabbar v-model="selected">
-        <mt-tab-item id="home" href="#/">
-          <i slot="icon" class="iconfont f_s24">&#xe600;</i>
-          首页
-        </mt-tab-item>
-        <mt-tab-item id="essay" href="#/essay">
-          <i slot="icon" class="iconfont f_s24">&#xe603;</i>
-          文章
-        </mt-tab-item>
-        <mt-tab-item id="find" href="#/find">
-          <i slot="icon" class="iconfont f_s24">&#xe604;</i>
-          发现
-        </mt-tab-item>
-        <mt-tab-item id="about" href="#/about">
-          <i slot="icon" class="iconfont f_s24">&#xe601;</i>
-          关于
-        </mt-tab-item>
-        <mt-tab-item id="my" href="#/my">
-          <i slot="icon" class="iconfont f_s24">&#xe602;</i>
-          我
-        </mt-tab-item>
-      </mt-tabbar>
-    </div>
   </div>
 </template>
 
 <script>
-import { Tabbar, TabItem, Indicator } from 'mint-ui'
 
 export default {
-  name: 'app',
-  components: {
-    'mt-tabbar': Tabbar, 'mt-tab-item': TabItem
-  },
-  data () {
-    let wlh = window.location.hash
-    return {
-      selected: wlh.substring(2, wlh.length) || 'home'
-    }
-  },
-  methods: {
-    test: function () {
-      Indicator.open({
-        text: '加载中...',
-        spinnerType: 'fading-circle'
-      })
-      setTimeout(() => Indicator.close(), 500)
-    }
-  }
+  name: 'app'
 }
 </script>
 
@@ -124,11 +81,5 @@ table { border-collapse: collapse; border-spacing: 0;font-size: 14px;table-layou
 
 .tab-content{
   margin-bottom:55px;
-}
-.tab-bottom{
-  position:fixed;
-  left:0px;
-  right:0px;
-  bottom:0px;
 }
 </style>

@@ -7,57 +7,109 @@
         </td>
         <td class="td2">
           <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe60e;</i>
-          <span>胖墩XXXXXXXXL</span>
+          <span>{{myInfo.nickname}}</span>
         </td>
       </tr>
       <tr>
         <td class="td3">
           <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe638;</i>
-          <span>许学普 epo</span>
+          <span>{{myInfo.username}}</span>
         </td>
       </tr>
     </table>
-    <mt-cell title="15889559171" is-link to="tel:15889559171">
+    <mt-cell v-bind:title="myInfo.phone" is-link v-bind:to="'tel:'+myInfo.phone">
       <i slot="icon" class="iconfont" style="color:#840042;margin-right:10px;">&#xe609;</i>
     </mt-cell>
-    <mt-cell title="xuxuepu" is-link to="#">
+    <mt-cell v-bind:title="myInfo.weixin" is-link>
       <i slot="icon" class="iconfont" style="color:#007800;margin-right:10px;">&#x3433;</i>
     </mt-cell>
-    <mt-cell title="529199267" is-link to="tencent://message/?uin=529199267&Site=&Menu=yes">
+    <mt-cell v-bind:title="myInfo.qq" is-link v-bind:to="'tencent://message/?uin='+myInfo.qq+'&Site=&Menu=yes'">
       <i slot="icon" class="iconfont" style="color:#FF4521;margin-right:10px;">&#xe606;</i>
     </mt-cell>
-    <mt-cell title="xuxuepu@126.com" is-link to="mailto:xuxuepu@126.com">
+    <mt-cell v-bind:title="myInfo.email" is-link v-bind:to="'mailto:'+myInfo.email">
       <i slot="icon" class="iconfont" style="color:#0084FF;margin-right:10px;">&#xe605;</i>
     </mt-cell>
-    <mt-cell title="http://www.xuxuepu.com">
+    <mt-cell v-bind:title="myInfo.url">
       <i slot="icon" class="iconfont" style="color:#844200;margin-right:10px;">&#xe60a;</i>
     </mt-cell>
-    <mt-cell title="广东省深圳市南山区南山智园C3栋">
+    <mt-cell v-bind:title="myInfo.address">
       <i slot="icon" class="iconfont" style="color:#428484;margin-right:10px;">&#xe607;</i>
     </mt-cell>
     <div style="padding:30px 20px 0;text-align:center;"><mt-button icon="more" type="primary" size="large" @click.native="showDetailInfo">更多资料</mt-button></div>
+    <xxp-menu/>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { Cell, CellSwipe, MessageBox, Button } from 'mint-ui'
-
-Vue.component(Cell.name, Cell)
-Vue.component(CellSwipe.name, Cell)
-Vue.component(CellSwipe.name, Cell)
-Vue.component(Button.name, Button)
+import { Cell, MessageBox, Button, Indicator } from 'mint-ui';
+import { my } from './../service';
+import Menu from './Menu';
 
 export default {
   name: 'my',
+  components: {
+    'xxp-menu': Menu,
+    'mt-cell': Cell,
+    'mt-button': Button
+  },
+  created(){
+    this.getMyInfo();
+  },
   methods: {
-    showDetailInfo: function () {
-      MessageBox('提示', '暂未开放')
+    //显示授权
+    showDetailInfo() {
+      let that = this;
+      let msgbox = ()=>{
+        MessageBox.prompt('请输入授权码', '胖墩提示').then(({ value, action }) => {
+          if(!value){
+            MessageBox.alert('授权码不能为空', '胖墩提示').then(action => {
+              msgbox();
+            });
+            return false;
+          }
+          if(action == 'confirm'){
+            that.judgeAuthorizationCode();
+          }
+        });
+      };
+      msgbox();
+    },
+    //判断授权码
+    judgeAuthorizationCode(){
+      MessageBox.alert('授权码不正确', '胖墩提示');
+    },
+    //获取我的信息
+    getMyInfo(){
+      let that = this;
+      Indicator.open({
+        text: '加载中...',
+        spinnerType: 'fading-circle'
+      });
+      let res = my.getUserInfo({
+        vueComponent: that,
+        id: 1
+      }).then(res =>{
+        Indicator.close();
+        if(!res.code){
+            that.$data.myInfo = res.data;
+        }else{
+          MessageBox.alert(res.message, '胖墩提示');
+        }
+      });
     }
   },
   data () {
     return {
-
+      myInfo: {
+        nickname: 'loading...',
+        username: 'loading...',
+        phone: 'loading...',
+        weixin: 'loading...',
+        qq: 'loading...',
+        email: 'loading...',
+        url: 'loading...',
+        address: 'loading...'
+      }
     }
   }
 }

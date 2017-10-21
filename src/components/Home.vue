@@ -15,15 +15,18 @@
         </ul>
       </div>
     </div>
+    <xxp-menu/>
   </div>
 </template>
 
 <script>
 import { Search, Swipe, SwipeItem, Lazyload, Button, MessageBox } from "mint-ui";
+import Menu from './Menu';
 
 export default {
   name: "home",
   components: {
+    "xxp-menu": Menu,
     "mint-searc": Search,
     "mint-swipe": Swipe,
     "mint-swipe-item": SwipeItem,
@@ -45,7 +48,7 @@ export default {
         })
         .then(
           res => {
-            MessageBox('测试连接数据库', res.data.data.msg)
+            //MessageBox('测试连接数据库', res.data.data.msg)
           },
           error => {
 

@@ -8,15 +8,18 @@
     <mint-cell title="MySQL"></mint-cell>
     <p>工具</p>
     <mint-cell title="VScode、Navicat、git"></mint-cell>
+    <xxp-menu/>
   </div>
 </template>
 
 <script>
-import { Cell } from 'mint-ui'
+import { Cell } from 'mint-ui';
+import Menu from './Menu';
 
 export default {
   name: 'about',
   components: {
+    'xxp-menu': Menu,
     'mint-cell': Cell
   },
   methods: {

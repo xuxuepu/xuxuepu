@@ -1,30 +1,25 @@
 <template>
   <div class="essay">
-    <mint-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <mint-cell v-for="item in list" v-bind:title="item.title" is-link href="#/essay/detail">
-        <img slot="icon" src="./../assets/123.jpg" width="32" height="32">
+    <mint-loadmore :topMethod="loadTop" :bottomMethod="loadBottom" :bottomAllLoaded="true" ref="loadmore">
+      <mint-cell v-for="item in list" v-bind:title="item.title" is-link v-bind:to="{name: 'EssayDetail', params: {id: item.id}}">
+        <span slot="icon" class="dotList"></span>
       </mint-cell>
     </mint-loadmore>
+    <xxp-menu/>
   </div>
 </template>
 
 <script>
-import { Loadmore, Cell } from 'mint-ui';
+import { Loadmore, Cell, Indicator, MessageBox } from 'mint-ui';
 import { essay } from './../service';
+import Menu from './Menu';
 
 export default {
   name: 'essay',
-  methods: {
-    loadTop (id) {
-      this.$refs.loadmore.onTopLoaded(id)
-    },
-    loadBottom (id) {
-    },
-    allLoaded (id) {
-    }
-  },
   components: {
-    'mint-loadmore': Loadmore, 'mint-cell': Cell
+    'xxp-menu': Menu,
+    'mint-loadmore': Loadmore,
+    'mint-cell': Cell
   },
   data () {
     return {
@@ -35,28 +30,28 @@ export default {
     this.getEssayList();
   },
   methods: {
+    loadTop(id) {
+      this.$refs.loadmore.onTopLoaded(id)
+    },
+    loadBottom(id) {
+    },
+    //获取文章列表
     getEssayList() {
       let that = this;
-      /*console.log(essay);
-      essay.getEssayList(null, null, (req)=>{
-        if(!req.code){
-            that.$data.list = req.data
-          }else{
-
-          }
-      });*/
-      that.$http({
-          method: "GET",
-          url: "https://service.xuxuepu.com/api/essay/list"
-        })
-        .then(
-          response => {
-            that.$data.list = response.data.data
-          },
-          error => {
-            
-          }
-        );
+      Indicator.open({
+        text: '加载中...',
+        spinnerType: 'fading-circle'
+      });
+      let res = essay.getEssayList({
+        vueComponent: that
+      }).then(res =>{
+        Indicator.close();
+        if(!res.code){
+            that.$data.list = res.data;
+        }else{
+          MessageBox.alert(res.message, '胖墩提示');
+        }
+      });
     }
   },
 }
@@ -64,7 +59,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  img{
-    border-radius:7px;padding:10px 10px 10px 0;
+  .dotList{
+    border-radius:50%;
+    background: #26a2ff;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
   }
 </style>
