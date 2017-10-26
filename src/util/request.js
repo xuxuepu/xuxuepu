@@ -45,6 +45,7 @@ function requestGet(api, data) {
 
     return data.vueComponent.$http({
         method: "GET",
+        credentials: 'include',
         url: url
       })
       .then(response => {

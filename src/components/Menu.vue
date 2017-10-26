@@ -1,25 +1,26 @@
 <template>
   <div id="xxp-menu">
+    <div style="height: 55px;"></div>
     <div class="tab-bottom">
       <mt-tabbar v-model="selected">
         <mt-tab-item id="home" href="#/">
-          <i slot="icon" class="iconfont f_s24">&#xe600;</i>
+          <i slot="icon" class="iconfont f_s24">&#xe64e;</i>
           首页
         </mt-tab-item>
         <mt-tab-item id="essay" href="#/essay">
-          <i slot="icon" class="iconfont f_s24">&#xe603;</i>
+          <i slot="icon" class="iconfont f_s24">&#xe8b8;</i>
           文章
         </mt-tab-item>
         <mt-tab-item id="find" href="#/find">
-          <i slot="icon" class="iconfont f_s24">&#xe604;</i>
+          <i slot="icon" class="iconfont f_s24">&#xe608;</i>
           发现
         </mt-tab-item>
         <mt-tab-item id="about" href="#/about">
-          <i slot="icon" class="iconfont f_s24">&#xe601;</i>
+          <i slot="icon" class="iconfont f_s24">&#xe714;</i>
           关于
         </mt-tab-item>
         <mt-tab-item id="my" href="#/my">
-          <i slot="icon" class="iconfont f_s24">&#xe602;</i>
+          <i slot="icon" class="iconfont f_s24">&#xe600;</i>
           我
         </mt-tab-item>
       </mt-tabbar>
@@ -48,22 +49,6 @@ export default {
 </script>
 
 <style>
-@font-face {
-  font-family: 'iconfont';  /* project id："169033" */
-  src: url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.eot');
-  src: url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.eot') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.svg#iconfont') format('svg');
-}
-
-.iconfont{
-    font-family:"iconfont" !important;
-    font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 .tab-bottom{
   position:fixed;

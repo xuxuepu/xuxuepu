@@ -6,6 +6,7 @@ import EssayDetail from '../components/EssayDetail'
 import Find from '../components/Find'
 import About from '../components/About'
 import My from '../components/My'
+import Resume from '../components/Resume'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/my',
       name: 'My',
       component: My
+    },
+    {
+      path: '/resume',
+      name: 'Resume',
+      component: Resume
     }
   ]
 })

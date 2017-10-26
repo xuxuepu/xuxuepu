@@ -6,34 +6,34 @@
           <img src="./../assets/123.jpg" width="64" height="64" alt=""/>
         </td>
         <td class="td2">
-          <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe60e;</i>
+          <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe67b;</i>
           <span>{{myInfo.nickname}}</span>
         </td>
       </tr>
       <tr>
         <td class="td3">
-          <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe638;</i>
+          <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe6f3;</i>
           <span>{{myInfo.username}}</span>
         </td>
       </tr>
     </table>
     <mt-cell v-bind:title="myInfo.phone" is-link v-bind:to="'tel:'+myInfo.phone">
-      <i slot="icon" class="iconfont" style="color:#840042;margin-right:10px;">&#xe609;</i>
+      <i slot="icon" class="iconfont" style="color:#840042;margin-right:10px;">&#xe611;</i>
     </mt-cell>
     <mt-cell v-bind:title="myInfo.weixin" is-link>
-      <i slot="icon" class="iconfont" style="color:#007800;margin-right:10px;">&#x3433;</i>
+      <i slot="icon" class="iconfont" style="color:#007800;margin-right:10px;">&#xe602;</i>
     </mt-cell>
     <mt-cell v-bind:title="myInfo.qq" is-link v-bind:to="'tencent://message/?uin='+myInfo.qq+'&Site=&Menu=yes'">
-      <i slot="icon" class="iconfont" style="color:#FF4521;margin-right:10px;">&#xe606;</i>
+      <i slot="icon" class="iconfont" style="color:#FF4521;margin-right:10px;">&#xe648;</i>
     </mt-cell>
     <mt-cell v-bind:title="myInfo.email" is-link v-bind:to="'mailto:'+myInfo.email">
-      <i slot="icon" class="iconfont" style="color:#0084FF;margin-right:10px;">&#xe605;</i>
+      <i slot="icon" class="iconfont" style="color:#0084FF;margin-right:10px;">&#xe643;</i>
     </mt-cell>
     <mt-cell v-bind:title="myInfo.url">
-      <i slot="icon" class="iconfont" style="color:#844200;margin-right:10px;">&#xe60a;</i>
+      <i slot="icon" class="iconfont" style="color:#844200;margin-right:10px;">&#xe62d;</i>
     </mt-cell>
     <mt-cell v-bind:title="myInfo.address">
-      <i slot="icon" class="iconfont" style="color:#428484;margin-right:10px;">&#xe607;</i>
+      <i slot="icon" class="iconfont" style="color:#428484;margin-right:10px;">&#xe601;</i>
     </mt-cell>
     <div style="padding:30px 20px 0;text-align:center;"><mt-button icon="more" type="primary" size="large" @click.native="showDetailInfo">更多资料</mt-button></div>
     <xxp-menu/>
@@ -68,15 +68,45 @@ export default {
             return false;
           }
           if(action == 'confirm'){
-            that.judgeAuthorizationCode();
+            that.judgeAuthorizationCode(value);
           }
         });
       };
-      msgbox();
+
+      Indicator.open({
+        text: '请稍候...',
+        spinnerType: 'fading-circle'
+      });
+      my.isAuthorizationResume({
+        vueComponent: that
+      }).then(res =>{
+        Indicator.close();
+        if(!res.code){
+            that.$router.push({ name: 'Resume' });
+        }else{
+          msgbox();
+        }
+      });
     },
     //判断授权码
-    judgeAuthorizationCode(){
-      MessageBox.alert('授权码不正确', '胖墩提示');
+    judgeAuthorizationCode(code){
+      let that = this;
+      Indicator.open({
+        text: '请稍候...',
+        spinnerType: 'fading-circle'
+      });
+      my.resumeAuthorizationCode({
+        vueComponent: that,
+        authorization_code: code,
+        user_id: that.$data.myInfo.id
+      }).then(res =>{
+        Indicator.close();
+        if(!res.code){
+            that.$router.push({ name: 'Resume' });
+        }else{
+          MessageBox.alert('授权码不正确', '胖墩提示');
+        }
+      });
     },
     //获取我的信息
     getMyInfo(){
@@ -85,7 +115,7 @@ export default {
         text: '加载中...',
         spinnerType: 'fading-circle'
       });
-      let res = my.getUserInfo({
+      my.getUserInfo({
         vueComponent: that,
         id: 1
       }).then(res =>{

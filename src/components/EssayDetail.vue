@@ -68,12 +68,13 @@ export default {
   }
   .title{
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 0 10px;
   }
 
 .title .title-content{
     color: #333;
     font-size: 24px;
+    margin-bottom: 8px;
 }
 
 .title .title-author a{

@@ -15,11 +15,14 @@ const config = (() => {
       getHome: '/home',
       getEssayList: '/essay/list',
       getEssayDetail: '/essay/detail',
-      getUserInfo: '/user/info'
+      getUserInfo: '/user/info',
+      isAuthorizationResume: '/resume/is_authorization_resume',
+      resumeAuthorizationCode: '/resume/authorizationcode_by_userid',
+      getResumeDetail: '/resume/detail'
     },
     urlOrigin: url, // 当前url
     qiniuPath: 'https://www.xuxuepu.com/'// 七牛地址
   }
-})()
+})();
 
-export default config
+export default config;

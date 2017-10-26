@@ -63,12 +63,12 @@ table { border-collapse: collapse; border-spacing: 0;font-size: 14px;table-layou
 .add_dot2 {overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 
 @font-face {
-  font-family: 'iconfont';  /* project id："169033" */
-  src: url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.eot');
-  src: url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.eot') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_h5et0ney0yg5jyvi.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 453619 */
+  src: url('//at.alicdn.com/t/font_453619_5fd4hqxb19gousor.eot');
+  src: url('//at.alicdn.com/t/font_453619_5fd4hqxb19gousor.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_453619_5fd4hqxb19gousor.woff') format('woff'),
+  url('//at.alicdn.com/t/font_453619_5fd4hqxb19gousor.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_453619_5fd4hqxb19gousor.svg#iconfont') format('svg');
 }
 
 .iconfont{
@@ -77,9 +77,5 @@ table { border-collapse: collapse; border-spacing: 0;font-size: 14px;table-layou
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
-}
-
-.tab-content{
-  margin-bottom:55px;
 }
 </style>
