@@ -22,15 +22,8 @@ export default {
     'xxp-menu': Menu,
     'mint-cell': Cell
   },
-  methods: {
-    test: function () {
-      console.log('test')
-    }
-  },
-  data () {
-    return {
-
-    }
+  created() {
+    documentTitle('关于网站');
   }
 }
 </script>

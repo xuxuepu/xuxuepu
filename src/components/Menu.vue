@@ -21,7 +21,7 @@
         </mt-tab-item>
         <mt-tab-item id="my" href="#/my">
           <i slot="icon" class="iconfont f_s24">&#xe600;</i>
-          我
+          胖墩
         </mt-tab-item>
       </mt-tabbar>
     </div>

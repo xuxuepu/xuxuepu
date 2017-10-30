@@ -1,5 +1,5 @@
 <template>
-  <div class="essaydetail">
+  <div class="essaydetail" v-if="detail.id">
     <div class="title">
       <div class="title-content">{{detail.title}}</div>
       <div class="title-author">
@@ -20,7 +20,11 @@ import { essay } from './../service';
 export default {
   name: 'essaydetail',
   created(){
+    document.getElementById('root_bg').style.cssText = "background-color: #fff";
     this.getEssayDetail();
+  },
+  beforeDestroy(){
+    document.getElementById('root_bg').style.cssText = "background-color: none";
   },
   methods: {
     //获取文章详情
@@ -40,6 +44,7 @@ export default {
           Indicator.close();
           if(!res.code){
               that.$data.detail = res.data;
+              documentTitle(res.data.title);
           }else{
             MessageBox.alert(res.message, '胖墩提示');
           }

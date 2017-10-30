@@ -1,87 +1,64 @@
 <template>
   <div class="home">
-    <div class="imgs_div">
-      <div v-for="item in imgs" @click="clickDiv()">
-        <ul>
-          <li class="li1">{{item.str}}</li>
-          <li><img v-bind:src="item.src" alt=""/></li>
-        </ul>
-      </div>
+    <div v-for="item in dataItem" class="img-div img1">
+      <img v-bind:src="item.img" alt="" style="width: 100%"/>
+      <div class="itemText">{{item.text}}</div>
     </div>
     <xxp-menu/>
   </div>
 </template>
 
 <script>
-import { MessageBox } from "mint-ui";
 import Menu from './Menu';
 
 export default {
   name: "home",
   components: {
-    "xxp-menu": Menu
+    'xxp-menu': Menu
   },
   created() {
-    //this.getList();
+    documentTitle('胖墩 - 前端人士');
   },
-  methods: {
-    clickDiv() {
-      MessageBox.alert('新功能待开发...', '胖墩提示')
-    },
-    getList() {
-      let that = this;
-      that.$http({
-          method: "GET",
-          url: "https://service.xuxuepu.com/api/home"
-        })
-        .then(
-          res => {
-            //MessageBox('测试连接数据库', res.data.data.msg)
-          },
-          error => {
-
-          }
-        );
-    }
-  },
-  data() {
+  data(){
     return {
-      selected: "home",
-      value: "adfsdf",
-      imgs: [
-        { str: "前端工程化", src: require("./../assets/a1.jpg") },
-        { str: "前端组件化", src: require("./../assets/a2.jpg") },
-        { str: "前端性能优化", src: require("./../assets/a3.jpg") }
-      ]
-    };
+      dataItem: [{
+        img: require('./../assets/1.jpg'),
+        text: '一个前端胖墩 - 喜欢自称前端人士'
+      },{
+        img: require('./../assets/2.jpg'),
+        text: '一个假装文艺的前端'
+      },{
+        img: require('./../assets/3.jpg'),
+        text: '一个喜欢装二卖萌的前端'
+      },{
+        img: require('./../assets/4.jpg'),
+        text: '一个喜欢自拍的前端'
+      },{
+        img: require('./../assets/5.jpg'),
+        text: '一个喜欢宅在家的前端'
+      }]
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.imgs_div {
+.img-div {
   overflow: hidden;
-}
-.imgs_div > div {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 10px;
-}
-.imgs_div > div > ul {
   position: relative;
 }
-.imgs_div > div img {
-  width: 100%;
+.img-div > img{
+  float: left;
 }
-.imgs_div > div > ul > .li1 {
+.itemText{
   position: absolute;
-  background: rgba(255, 255, 255, 0.3);
+  font-size: 16px;
   color: #fff;
-  text-align: center;
   width: 100%;
-  bottom: 2px;
-  padding: 6px 0;
-  font-size: 24px;
+  background: rgba(0, 0, 0, .5);
+  bottom: 0;
+  padding: 10px;
+  letter-spacing:2px;
 }
 </style>

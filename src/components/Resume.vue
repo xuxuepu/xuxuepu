@@ -20,7 +20,11 @@ import Menu from './Menu';
 export default {
   name: 'resume',
   created(){
+    document.getElementById('root_bg').style.cssText = "background-color: #fff";
     this.isAuthorizationResume();//判断是否可授权
+  },
+  beforeDestroy(){
+    document.getElementById('root_bg').style.cssText = "background-color: none";
   },
   methods: {
     //判断是否可授权
@@ -53,8 +57,9 @@ export default {
           Indicator.close();
           if(!res.code){
               that.$data.detail = res.data;
+              documentTitle(res.data.title);
           }else{
-            
+            MessageBox.alert(res.message, '胖墩提示');
           }
         });
     }
@@ -94,7 +99,6 @@ export default {
 }
 
 .content{
-    margin: 0 10px;
     padding-bottom: 10px;
 }
 </style>

@@ -53,6 +53,7 @@ export default {
     'mt-button': Button
   },
   created(){
+    documentTitle('胖墩的资料');
     this.getMyInfo();
   },
   methods: {

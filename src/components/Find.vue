@@ -16,11 +16,8 @@ export default {
   components: {
     'xxp-menu': Menu,
   },
-  methods: {},
-  data () {
-    return {
-      list: []
-    }
+  created() {
+    documentTitle('发现更多');
   }
 }
 </script>
