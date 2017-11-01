@@ -1,6 +1,6 @@
 <template>
   <div class="resume">
-    <div class="title">
+    <div class="title" v-if="detail.id">
       <div class="title-content">{{detail.title}}</div>
       <div class="title-author">
         <span>最后更新时间：{{detail.create_date}}</span>
@@ -41,6 +41,33 @@ export default {
             that.getResumeDetail();//获取简历
         }else{
           Indicator.close();
+          let code = that.$router.history.current.query.code;
+          if(code){
+            that.judgeAuthorizationCode(code);//判断授权码
+          }else{
+            MessageBox.alert('您没有授权查看', '胖墩提示').then(action => {
+              window.history.go(-1);
+            });
+          }
+        }
+      });
+    },
+    //判断授权码
+    judgeAuthorizationCode(code){
+      let that = this;
+      Indicator.open({
+        text: '请稍候...',
+        spinnerType: 'fading-circle'
+      });
+      my.resumeAuthorizationCode({
+        vueComponent: that,
+        authorization_code: code,
+        user_id: 1
+      }).then(res =>{
+        Indicator.close();
+        if(!res.code){
+            that.getResumeDetail();//获取简历
+        }else{
           MessageBox.alert('您没有授权查看', '胖墩提示').then(action => {
             window.history.go(-1);
           });

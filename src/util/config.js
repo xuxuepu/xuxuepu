@@ -9,7 +9,7 @@ const config = (() => {
     // 打印请求日志
     isPrintLog: isLocalhost,
     // ajax_http locals
-    requestHttp: 'https://service.xuxuepu.com/api',
+    requestHttp: 'http://service.xuxuepu.com/api',
     // ajax_http请求url
     api: {
       getHome: '/home',
@@ -21,7 +21,7 @@ const config = (() => {
       getResumeDetail: '/resume/detail'
     },
     urlOrigin: url, // 当前url
-    qiniuPath: 'https://www.xuxuepu.com/'// 七牛地址
+    qiniuPath: 'http://www.xuxuepu.com/'// 七牛地址
   }
 })();
 

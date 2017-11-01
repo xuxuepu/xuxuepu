@@ -3,7 +3,7 @@
     <table>
       <tr>
         <td class="td1" rowspan="2">
-          <img src="./../assets/123.jpg" width="64" height="64" alt=""/>
+          <img src="./../assets/img/123.jpg" width="64" height="64" alt=""/>
         </td>
         <td class="td2">
           <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe67b;</i>
@@ -20,7 +20,7 @@
     <mt-cell v-bind:title="myInfo.phone" is-link v-bind:to="'tel:'+myInfo.phone">
       <i slot="icon" class="iconfont" style="color:#840042;margin-right:10px;">&#xe611;</i>
     </mt-cell>
-    <mt-cell v-bind:title="myInfo.weixin" is-link>
+    <mt-cell v-bind:title="myInfo.weixin" is-link @click.native="openQRCode()">
       <i slot="icon" class="iconfont" style="color:#007800;margin-right:10px;">&#xe602;</i>
     </mt-cell>
     <mt-cell v-bind:title="myInfo.qq" is-link v-bind:to="'tencent://message/?uin='+myInfo.qq+'&Site=&Menu=yes'">
@@ -37,6 +37,14 @@
     </mt-cell>
     <div style="padding:30px 20px 0;text-align:center;"><mt-button icon="more" type="primary" size="large" @click.native="showDetailInfo">更多资料</mt-button></div>
     <xxp-menu/>
+    <div class="weixin-qrcode-body" v-if="isShowWeixin" v-on:click="hideQRCode">
+      <div>
+          <div class="weixin-qrcode" v-on:click="stopdiv">
+              <img src="./../assets/img/weixin_qrcode.jpg" alt="" style="width: 200px"/>
+            </div>
+            <div class="weixin-qrcode-text">长按二维码联系我</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,6 +82,7 @@ export default {
         });
       };
 
+      //判断是否已存在授权
       Indicator.open({
         text: '请稍候...',
         spinnerType: 'fading-circle'
@@ -127,6 +136,17 @@ export default {
           MessageBox.alert(res.message, '胖墩提示');
         }
       });
+    },
+    //打开微信二维码
+    openQRCode(){
+      this.$data.isShowWeixin = true;
+    },
+    //关闭微信二维码
+    hideQRCode(){
+      this.$data.isShowWeixin = false;
+    },
+    stopdiv(e){
+      e.stopPropagation();//阻止事件冒泡
     }
   },
   data () {
@@ -140,7 +160,8 @@ export default {
         email: 'loading...',
         url: 'loading...',
         address: 'loading...'
-      }
+      },
+      isShowWeixin: false
     }
   }
 }
@@ -150,7 +171,7 @@ export default {
 <style scoped>
   table{
     width:100%;
-    background-image:url(../assets/my_bg.jpg);
+    background-image:url(./../assets/img/my_bg.jpg);
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center center;
@@ -178,4 +199,34 @@ export default {
     vertical-align:top;
     padding-top:2px;
   }
+  .weixin-qrcode-body{
+    display: flex;
+    z-index: 2;
+    position: fixed;
+    background: rgba(0, 0, 0, .3);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items:center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+}
+
+.weixin-qrcode-body > div{
+    flex: 1;
+}
+
+.weixin-qrcode{
+    margin:0 auto;
+    width: 200px;
+    height: 200px;
+    border: 10px solid #fff;
+}
+
+.weixin-qrcode-text{
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+}
 </style>
