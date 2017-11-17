@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../components/Home'
-import Essay from '../components/Essay'
-import EssayDetail from '../components/EssayDetail'
-import Find from '../components/Find'
-import About from '../components/About'
-import My from '../components/My'
-import Resume from '../components/Resume'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '../components/Home';
+import Essay from '../components/Essay';
+import EssayDetail from '../components/EssayDetail';
+import Find from '../components/Find';
+import About from '../components/About';
+import My from '../components/My';
+import Resume from '../components/Resume';
 
 Vue.use(Router)
 
