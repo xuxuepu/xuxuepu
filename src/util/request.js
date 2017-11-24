@@ -1,20 +1,21 @@
-import config from './config';
+import Vue from 'vue';
+import Config from './config';
 
 //处理发送前事件
 function beforesendHandling(url, data){
-    config.isPrintLog ? console.log("【上送url】：\n", url, "\n【上送的数据】：\n", data) : true;
+    Config.isPrintLog ? console.log("【上送url】：\n", url, "\n【上送的数据】：\n", data) : true;
 }
 
 //处理完成事件
 function completeHandling(data) {
-    config.isPrintLog ? console.log("【返回的数据】：\n", data) : true;
+    Config.isPrintLog ? console.log("【返回的数据】：\n", data) : true;
     Number(data.code) == 200 ? logout() : true;//登出
     return data;
 }
 
 //处理错误事件
 function errHandling(err){
-    config.isPrintLog ? console.log("【错误信息】：\n", err) : true;
+    Config.isPrintLog ? console.log("【错误信息】：\n", err) : true;
     return {
         code: 520,
         message: '服务器异常，正在努力抢修中'
@@ -23,7 +24,7 @@ function errHandling(err){
 
 //登出事件
 function logout() {
-    config.accreditLogin();//重新授权登录
+    Config.accreditLogin();//重新授权登录
 }
 
 /**
@@ -33,23 +34,21 @@ function logout() {
  * @returns {Promise.<Response>}
  */
 function requestGet(api, data) {
-    let url = config.requestHttp + api + '?time=' + new Date().getTime();
+    let url = api + '?time=' + new Date().getTime();
 
     for (let item in data) {
-        if(item != "vueComponent"){
-            url = url + "&" + item + "=" + data[item];
-        }
+        url = url + "&" + item + "=" + data[item];
     }
 
-    beforesendHandling(url, data);
+    beforesendHandling(url, data);//处理发送前事件
 
-    return data.vueComponent.$http({
+    return Vue.http({
         method: "GET",
         credentials: 'include',
         url: url
       })
       .then(response => {
-          return completeHandling(response.data);
+          return completeHandling(response.data);//处理返回事件
         },
         error => {
           return errHandling(error);
@@ -63,10 +62,10 @@ function requestGet(api, data) {
  * @param data
  * @returns {Promise.<Response>}
  */
-function requestPost(url, data, beforesend, complete) {
-    url = config.requestHttp + config.api[url] + '?time=' + new Date().getTime();
+function requestPost(api, data) {
+    let url = api + '?time=' + new Date().getTime();
 
-    beforesendHandling(url, data, beforesend );//处理发送前事件
+    beforesendHandling(url, data);//处理发送前事件
 
     let options = {
         method: 'POST',
@@ -76,41 +75,18 @@ function requestPost(url, data, beforesend, complete) {
             'Accept': 'application/json;charset=utf-8',
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        url: url
     };
-    fetch(url, options)
-        .then(checkStatus)
-        .then(parseJSON)
-        .then(data => completeHandling(data, complete))
-        .catch(err => errHandling(err, complete));
+    return Vue.http(options)
+      .then(response => {
+          return completeHandling(response.data);//处理返回事件
+        },
+        error => {
+          return errHandling(error);
+        }
+      );
+
 }
 
-/**
- * post请求(form提交)
- * @param url
- * @param data
- * @returns {Promise.<Response>}
- */
-function requestPostForm(url, data, beforesend, complete) {
-    url = config.requestHttp + config.api[url] + '?time=' + new Date().getTime();
-
-    beforesendHandling(url, data, beforesend );//处理发送前事件
-
-    let formData = new FormData();
-    for (let item in data) {
-        formData.append(item, data[item]);
-    }
-    let options = {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'include',
-        body: formData
-    };
-    fetch(url, options)
-        .then(checkStatus)
-        .then(parseJSON)
-        .then(data => completeHandling(data, complete))
-        .catch(err => errHandling(err, complete));
-}
-
-export default {requestGet, requestPost, requestPostForm};
+export default {requestGet, requestPost};

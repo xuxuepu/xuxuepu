@@ -3,7 +3,7 @@
     <table>
       <tr>
         <td class="td1" rowspan="2">
-          <img src="http://owzim6ew3.bkt.clouddn.com/img/avatar.jpg-min64" width="64" height="64" alt=""/>
+          <img src="./../assets/img/avatar.jpg" width="64" height="64" alt=""/>
         </td>
         <td class="td2">
           <i slot="icon" class="iconfont" style="color:#fff;margin-right:10px;">&#xe67b;</i>
@@ -40,7 +40,7 @@
     <div class="weixin-qrcode-body" v-if="isShowWeixin" v-on:click="hideQRCode">
       <div>
           <div class="weixin-qrcode" v-on:click="stopdiv">
-              <img src="http://owzim6ew3.bkt.clouddn.com/img/weixin_qrcode.jpg" alt="" style="width: 200px"/>
+              <img src="./../assets/img/weixin_qrcode.jpg" alt="" style="width: 200px"/>
             </div>
             <div class="weixin-qrcode-text">长按二维码联系我</div>
       </div>
@@ -87,9 +87,7 @@ export default {
         text: '请稍候...',
         spinnerType: 'fading-circle'
       });
-      my.isAuthorizationResume({
-        vueComponent: that
-      }).then(res =>{
+      my.isAuthorizationResume().then(res =>{
         Indicator.close();
         if(!res.code){
             that.$router.push({ name: 'Resume' });
@@ -106,7 +104,6 @@ export default {
         spinnerType: 'fading-circle'
       });
       my.resumeAuthorizationCode({
-        vueComponent: that,
         authorization_code: code,
         user_id: that.$data.myInfo.id
       }).then(res =>{
@@ -126,7 +123,6 @@ export default {
         spinnerType: 'fading-circle'
       });
       my.getUserInfo({
-        vueComponent: that,
         id: 1
       }).then(res =>{
         Indicator.close();
@@ -171,7 +167,7 @@ export default {
 <style scoped>
   table{
     width:100%;
-    background-image:url(http://owzim6ew3.bkt.clouddn.com/img/my_bg.jpg);
+    background-image:url(./../assets/img/my_bg.jpg);
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center center;

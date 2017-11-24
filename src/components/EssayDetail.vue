@@ -38,7 +38,6 @@ export default {
           spinnerType: 'fading-circle'
         });
         let res = essay.getEssayDetail({
-          vueComponent: that,
           id: id
         }).then(res =>{
           Indicator.close();

@@ -61,9 +61,7 @@ export default {
         text: '加载中...',
         spinnerType: 'fading-circle'
       });
-      let res = essay.getEssayList({
-        vueComponent: that
-      }).then(res =>{
+      let res = essay.getEssayList().then(res =>{
         Indicator.close();
         if(!res.code){
             that.$data.list = res.data;

@@ -1,4 +1,4 @@
-import { config, request } from './../util';
+import { Config, Request } from './../util';
 
 export default {
     /**
@@ -6,26 +6,26 @@ export default {
      * @param {*data} data 
      */
     getUserInfo(data){
-        return request.requestGet(config.api.getUserInfo, data);
+        return Request.requestGet(Config.api.getUserInfo, data);
     },
     /**
      * 判断是否可授权读简历
      * @param {*data} data 
      */
     isAuthorizationResume(data){
-        return request.requestGet(config.api.isAuthorizationResume, data);
+        return Request.requestGet(Config.api.isAuthorizationResume, data);
     },
     /**
      * 获取授权
      * @param {*data} data 
      */
     resumeAuthorizationCode(data){
-        return request.requestGet(config.api.resumeAuthorizationCode, data);
+        return Request.requestGet(Config.api.resumeAuthorizationCode, data);
     },
     /**
      * 获取简历
      */
     getResumeDetail(data){
-        return request.requestGet(config.api.getResumeDetail, data);
+        return Request.requestGet(Config.api.getResumeDetail, data);
     }
 }
